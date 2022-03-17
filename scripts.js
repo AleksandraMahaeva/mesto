@@ -22,7 +22,7 @@ const cards = [
     {
         name: 'Часовня Александра Невского',
         link: './images/Alexander_Nevsky_Chapel.jpg'
-    }
+    },
 ];
 
 const cardTemplate = document.getElementById('card-template').content; // шаблон карточек
