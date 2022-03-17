@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css.css">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Место Россия</title>
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="images/logo@2x.png" class="header__logo" alt="место Россия">
+    </header>
+    <main>
+      <section class="profile">
+        <img src="images/Yaroslav_the_Wise.png" class="profile__avatar" alt="Ярослав Мудрый">
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__author">Ярослав Мудрый</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <h2 class="profile__description">Основатель города Ярославль</h2>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="cards">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">2022 Mesto Russia</p>
+    </footer>
+    <!-- попап редактирование профиля -->
+    <div class="popup popup_profile-edit">
+      <div class="popup__container">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form name="edit-form" class="popup__form popup__form_profile_edit">
+          <input type="text" placeholder="Имя" class="popup__input popup__input_type_author">
+          <input type="text" placeholder="О себе" class="popup__input popup__input_type_description">
+          <button class="popup__submit popup__submit_profile_edit" type="submit">
+            Сохранить
+          </button>
+        </form>
+        <button class="popup__close-button popup__close-button_profile_edit" type="button"></button>
+      </div>
+    </div>
+    <!-- карточки -->
+    <template id="card-template">
+      <article class="card">
+        <img src="#" class="card__image" alt="#">
+        <div class="card__info">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </article>
+    </template>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

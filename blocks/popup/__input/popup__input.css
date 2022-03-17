@@ -1,0 +1,16 @@
+.popup__input {
+    width: 233px;
+    height: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    outline-color: #313cd6;
+}
+
+@media all and (min-width: 1279px) {
+    .popup__input {
+        width: 353px;
+        height: 27px;
+    }
+}

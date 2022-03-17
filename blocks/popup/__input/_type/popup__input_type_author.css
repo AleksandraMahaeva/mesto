@@ -1,0 +1,14 @@
+.popup__input_type_author {
+    position: absolute;
+    left: 22px;
+    top: 100px;
+    padding: 8px 0 13px 5px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+@media all and (min-width: 1279px) {
+    .popup__input_type_author {
+        left: 36px;
+    }
+}
