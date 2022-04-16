@@ -1,14 +1,25 @@
 .footer__copyright {
-    margin: auto;
-    width: 88%;
+    margin: 0 auto;
+    max-width: 283px;
     padding-top: 48px;
     padding-bottom: 36px;
     color: #545454;
- }
+}
+
+@media all and (min-width: 600px) {
+    .footer__copyright {
+        max-width: 582px;
+    }
+}
+
+@media all and (min-width: 900px) {
+    .footer__copyright {
+        max-width: 880px;
+    }
+}
 
 @media all and (min-width: 1279px) {
    .footer__copyright {
-       max-width: 880px;
        padding-top: 67px;
        padding-bottom: 60px;
    }
