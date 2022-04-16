@@ -1,14 +1,25 @@
 .header {
-    width: 100%;
     margin: 0 auto;
+    max-width: 283px;
     padding-top: 28px;
     padding-left: 27px;
     border-bottom: 1px solid #545454;
 }
 
-@media all and (min-width: 1279px) {
+@media all and (min-width: 600px) {
+    .header {
+        max-width: 582px;
+    }
+}
+
+@media all and (min-width: 900px) {
     .header {
         max-width: 880px;
+    }
+}
+
+@media all and (min-width: 1279px) {
+    .header {
         max-height: 74px;
         padding-top: 45px;
         padding-left: 0px;
