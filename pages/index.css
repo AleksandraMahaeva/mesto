@@ -21,12 +21,11 @@
 @import url('../blocks/popup/__input/popup__input.css');
 @import url('../blocks/popup/__heading/popup__heading.css');
 @import url('../blocks/popup/__container/popup__container.css');
-@import url('../blocks/popup/_profile-edit/popup_profile-edit.css');
+@import url('../blocks/popup/popup.css');
 @import url('../blocks/popup/__input/_type/popup__input_type_author.css');
-@import url('../blocks/popup/__input/_type/popup__input_type_profile-name.css');
 @import url('../blocks/popup/__input/_type/popup__input_type_description.css');
-@import url('../blocks/popup/__opened/popup__opened.css');
-@import url('../blocks/popup/__close-button/_profile/popup__close-button_profile_edit.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
+@import url('../blocks/popup/__close-button/popup__close-button.css');
 /* cards */
 @import url('../blocks/cards/cards.css');
 /* footer */

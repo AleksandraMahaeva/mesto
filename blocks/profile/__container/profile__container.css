@@ -4,13 +4,13 @@
     padding-bottom: 0;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: flex-start;
 }
 
 @media all and (min-width: 1279px) {
     .profile__container {
         max-width: 80%;
         margin-top: 0;
-        justify-content: start;
+        justify-content: flex-start;
     }
 }
