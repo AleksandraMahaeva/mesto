@@ -1,21 +1,18 @@
-.card__like-button {
-    width: 22px;
+.card__del-button {
+    width: 18px;
     height: 19px;
     background-color: transparent;
-    background-image: url(../../../images/like.svg);
+    background-image: url(../../../images/basket.svg);
     border: none;
     outline: none;
     background-repeat: no-repeat;
     transition: .3s;
     cursor: pointer;
     padding: 0;
+    position: absolute;
+    margin: 20px 20px auto 244px;
 }
 
-.card__like-button:hover {
+.card__del-button:hover {
     opacity: .5;
-}
-
-
-.like_active {
-    background-image: url(../../../images/like_active.svg);
 }
