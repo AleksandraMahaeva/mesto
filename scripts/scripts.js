@@ -48,19 +48,22 @@ const popupZoom = document.querySelector('#popup-img-zoom');
 const imgZoom = popupZoom.querySelector('.popup__image');
 const capZoom = popupZoom.querySelector('.popup__caption');
 const popupZoomCloseButton = document.querySelector('#popup-img-zoom-close-button');
+const popupList = [popupProfile, cardPopup, popupZoom]
 
 
 // открытие попапа
 function openPopup(popup) {
     popup.classList.add(popupOpened);
-} 
+
+}
 
 // закрытие попапа 
 function closePopup(popup) {
     popup.classList.remove(popupOpened);
+
 }
 
-// удалене карточки
+// удаление карточки
 function cardDelete(evt) {
     const cardEl = evt.target.closest('.card')
     cardEl.remove();
@@ -128,10 +131,33 @@ function submitCardForm(evt) {
     closePopup(cardPopup);
 }
 
+// закрытие попап при клике вне зоны попап
+const closePopupsOverlay = () => {
+    popupList.forEach((popup) => {
+        popup.addEventListener('click', (evt) => {
+            if (evt.target === evt.currentTarget) {
+                closePopup(popup);
+            }
+        });
+    });
+}
+
+// закрытие попап при нажатии на esc 
+const closePopupsByEsc = () => {
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            popupList.forEach((popup) => closePopup(popup));
+        }
+    });
+};
+
+closePopupsOverlay();
+closePopupsByEsc();
+
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
-popupProfileCloseButton.addEventListener('click',()=> closePopup(popupProfile));
+popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
 formProfileEdit.addEventListener('submit', submitProfileForm);
-cardPopupOpenButton.addEventListener('click',()=> openPopup(cardPopup));
-cardPopupCloseButton.addEventListener('click',()=> closePopup(cardPopup));
+cardPopupOpenButton.addEventListener('click', () => openPopup(cardPopup));
+cardPopupCloseButton.addEventListener('click', () => closePopup(cardPopup));
 cardFormAdd.addEventListener('submit', submitCardForm);
-popupZoomCloseButton.addEventListener('click',()=> closePopup(popupZoom));
+popupZoomCloseButton.addEventListener('click', () => closePopup(popupZoom));
