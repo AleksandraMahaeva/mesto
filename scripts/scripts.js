@@ -143,7 +143,6 @@ function submitCardForm(evt) {
 }
 
 function closeByEscape(evt) {
-    document.addEventListener('keydown', closeByEscape);
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened')
         closePopup(openedPopup);
