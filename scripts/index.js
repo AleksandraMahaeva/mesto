@@ -1,5 +1,5 @@
 import { Card } from './Card.js';
-import { FormValidator } from './validate.js';
+import { FormValidator } from './FormValidator.js';
 
 const mapping = [
     {
@@ -42,18 +42,54 @@ const cardPopupOpenButton = document.querySelector('.profile__add-button'); // �
 const cardFormAdd = document.querySelector('#add-card'); // форма редактирования попапа добавления "карточки"
 const nameField = cardFormAdd.querySelector('.popup__input_type_card-name'); // инпут название
 const linkField = cardFormAdd.querySelector('.popup__input_type_card-link'); // инпут ссылка
-const popups = [popupProfile, cardPopup]
+const templateId = '#template'
+const popupZoom = document.querySelector('#popup-img-zoom');
+const imgZoom = popupZoom.querySelector('.popup__image');
+const capZoom = popupZoom.querySelector('.popup__caption');
 
-mapping.forEach((map) => {
-    const card = new Card(map.name, map.link);
+const popups = [popupProfile, cardPopup, popupZoom]
+
+const formValidators = {}
+// Включение валидации
+const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector))
+    formList.forEach((formElement) => {
+      const validator = new FormValidator(formElement, config)
+      // получаем данные из атрибута `name` у формы
+      const formName = formElement.getAttribute('name')
+     // вот тут в объект записываем под именем формы
+     formValidators[formName] = validator;
+     validator.enableValidation();
+    });
+};
+
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'button_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+})
+
+function createCard(item) {
+    // тут создаете карточку и возвращаете ее
+    const card = new Card(item.name, item.link, templateId, handleCardClick);
     const cardElement = card.generateCard();
+    return cardElement
+}
 
+mapping.forEach((item) => {
     // Добавляем в DOM
-    document.querySelector('.mapping').append(cardElement);
+    cardsContainer.append(createCard(item));
 });
 
 // открытие попапа
 function openPopup(popup) {
+    const form = popup.querySelector('form')
+    if(form) {
+      formValidators[form.name].resetValidation()
+    }
     popup.classList.add(popupOpened);
     document.addEventListener('keydown', closeByEscape);
 }
@@ -62,6 +98,13 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove(popupOpened);
     document.removeEventListener('keydown', closeByEscape);
+}
+
+function handleCardClick(name, link) {
+    imgZoom.src = link;
+    imgZoom.alt = name;
+    capZoom.textContent = name;
+    openPopup(popupZoom);
 }
 
 // подписка на оверлей и клик по крестику
@@ -75,6 +118,13 @@ popups.forEach((popup) => {
         }
     })
 })
+
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
 
 // открытие попапа профиля
 function popupProfileOpen() {
@@ -94,7 +144,7 @@ function submitProfileForm(evt) {
 // изменение данных попапа добавления "карточки" и закрытие попапа
 function submitCardForm(evt) {
     evt.preventDefault();
-    const card = new Card(nameField.value, linkField.value);
+    const card = new Card(nameField.value, linkField.value, templateId, handleCardClick);
     const cardElement = card.generateCard();
     cardsContainer.insertBefore(cardElement, cardsContainer.firstElementChild);
     evt.target.reset();
@@ -103,32 +153,6 @@ function submitCardForm(evt) {
     cardPopupCloseButton.classList.add('button_inactive');
     closePopup(cardPopup);
 }
-
-function closeByEscape(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened')
-        closePopup(openedPopup);
-    }
-}
-
-
-const setValidation = (validationInfo) => {
-    const formList = Array.from(document.querySelectorAll(validationInfo.formSelector));
-    formList.forEach((formElement) => {
-        const validationForm = new FormValidator(validationInfo, formElement)
-        validationForm.enableValidation();
-    });
-}
-
-setValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'button_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-})
-
 
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
 formProfileEdit.addEventListener('submit', submitProfileForm);
