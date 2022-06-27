@@ -73,7 +73,7 @@ enableValidation({
 })
 
 function createCard(item) {
-    // тут создаете карточку и возвращаете ее
+    // тут создаем карточку и возвращаем ее
     const card = new Card(item.name, item.link, templateId, handleCardClick);
     const cardElement = card.generateCard();
     return cardElement
@@ -83,6 +83,22 @@ mapping.forEach((item) => {
     // Добавляем в DOM
     cardsContainer.append(createCard(item));
 });
+
+// изменение данных попапа добавления "карточки" и закрытие попапа
+function submitCardForm(evt) {
+    evt.preventDefault();
+    const cardEl = createCard({ name: nameField.value, link: linkField.value });
+    cardsContainer.insertBefore(cardEl, cardsContainer.firstElementChild);
+    evt.target.reset();
+    closePopup(cardPopup);
+}
+
+// открытие попапа
+function openPopupAndResetValidation(popup) {
+    const form = popup.querySelector('form')
+    formValidators[form.name].resetValidation()
+    openPopup(popup)
+}
 
 // открытие попапа
 function openPopup(popup) {
@@ -130,7 +146,7 @@ function closeByEscape(evt) {
 function popupProfileOpen() {
     authorField.value = profileAuthor.textContent; // передаем исходное значение в input.
     descriptionField.value = profileDescription.textContent; // передаем исходное значение в input.
-    openPopup(popupProfile);
+    openPopupAndResetValidation(popupProfile);
 }
 
 // изменение данных профиля и закрытие попапа
@@ -141,20 +157,7 @@ function submitProfileForm(evt) {
     closePopup(popupProfile);
 }
 
-// изменение данных попапа добавления "карточки" и закрытие попапа
-function submitCardForm(evt) {
-    evt.preventDefault();
-    const card = new Card(nameField.value, linkField.value, templateId, handleCardClick);
-    const cardElement = card.generateCard();
-    cardsContainer.insertBefore(cardElement, cardsContainer.firstElementChild);
-    evt.target.reset();
-    const cardPopupCloseButton = evt.target.querySelector('.popup__submit')
-    cardPopupCloseButton.setAttribute('disabled', true);
-    cardPopupCloseButton.classList.add('button_inactive');
-    closePopup(cardPopup);
-}
-
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
 formProfileEdit.addEventListener('submit', submitProfileForm);
-cardPopupOpenButton.addEventListener('click', () => openPopup(cardPopup));
+cardPopupOpenButton.addEventListener('click', () => openPopupAndResetValidation(cardPopup));
 cardFormAdd.addEventListener('submit', submitCardForm);
