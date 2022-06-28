@@ -54,12 +54,12 @@ const formValidators = {}
 const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formSelector))
     formList.forEach((formElement) => {
-      const validator = new FormValidator(formElement, config)
-      // получаем данные из атрибута `name` у формы
-      const formName = formElement.getAttribute('name')
-     // вот тут в объект записываем под именем формы
-     formValidators[formName] = validator;
-     validator.enableValidation();
+        const validator = new FormValidator(formElement, config)
+        // получаем данные из атрибута `name` у формы
+        const formName = formElement.getAttribute('name')
+        // вот тут в объект записываем под именем формы
+        formValidators[formName] = validator;
+        validator.enableValidation();
     });
 };
 
@@ -102,10 +102,6 @@ function openPopupAndResetValidation(popup) {
 
 // открытие попапа
 function openPopup(popup) {
-    const form = popup.querySelector('form')
-    if(form) {
-      formValidators[form.name].resetValidation()
-    }
     popup.classList.add(popupOpened);
     document.addEventListener('keydown', closeByEscape);
 }
