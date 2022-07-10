@@ -1,5 +1,6 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { Card } from '../scripts/Card.js';
+import { FormValidator } from '../scripts/FormValidator.js';
+import Section from '../components/Section.js';
 
 const mapping = [
     {
@@ -36,6 +37,7 @@ const profileDescription = document.querySelector('.profile__description'); // �
 const authorField = formProfileEdit.querySelector('.popup__input_type_author'); // инпут автор
 const descriptionField = formProfileEdit.querySelector('.popup__input_type_description'); // инпут описание
 const popupOpened = 'popup_opened'; // модификатор открытого попапа
+const cardsContainerSelector = '.mapping'
 const cardsContainer = document.querySelector('.mapping'); // элемент для карточек
 const cardPopup = document.querySelector('#popup-card-add'); // попап добавления "карточки"
 const cardPopupOpenButton = document.querySelector('.profile__add-button'); // кнопка открытия попапа добавления "карточки"
@@ -71,24 +73,26 @@ enableValidation({
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
 })
-
 function createCard(item) {
     // тут создаем карточку и возвращаем ее
-    const card = new Card(item.name, item.link, templateId, handleCardClick);
+    const card = new Card(item, templateId, handleCardClick);
     const cardElement = card.generateCard();
     return cardElement
 }
 
-mapping.forEach((item) => {
-    // Добавляем в DOM
-    cardsContainer.append(createCard(item));
-});
+const cardList = new Section({
+    items: mapping,
+    renderer: (item) => {
+      cardList.setItem(createCard(item));
+    }
+  },cardsContainerSelector);
+   
+  cardList.renderItems();
 
 // изменение данных попапа добавления "карточки" и закрытие попапа
 function submitCardForm(evt) {
     evt.preventDefault();
-    const cardEl = createCard({ name: nameField.value, link: linkField.value });
-    cardsContainer.insertBefore(cardEl, cardsContainer.firstElementChild);
+    cardList.setItem(createCard({ name: nameField.value, link: linkField.value }));
     evt.target.reset();
     closePopup(cardPopup);
 }
@@ -113,10 +117,8 @@ function closePopup(popup) {
 }
 
 function handleCardClick(name, link) {
-    imgZoom.src = link;
-    imgZoom.alt = name;
-    capZoom.textContent = name;
-    openPopup(popupZoom);
+    const cardPopup = new PopupWithImage(popupZoom, popupOpened, { name, link });
+    cardPopup.open();
 }
 
 // подписка на оверлей и клик по крестику
