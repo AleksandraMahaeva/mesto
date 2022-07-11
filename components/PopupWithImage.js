@@ -1,4 +1,6 @@
-class PopupWithImage extends Popup {
+import Popup from './Popup.js';
+
+export default class PopupWithImage extends Popup {
     constructor(popup, popupOpened, item) {
       super(popup, popupOpened);
       this._item = item;
@@ -7,9 +9,9 @@ class PopupWithImage extends Popup {
     }
 
     open() {
-        this._image.src = item.link;
-        this._image.alt = item.name;
-        this._cap.textContent = item.name;
+        this._image.src = this._item.link;
+        this._image.alt = this._item.name;
+        this._cap.textContent = this._item.name;
         super.open();
     }
 }

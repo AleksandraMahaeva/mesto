@@ -38,12 +38,12 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form id="edit-profile" name="edit-form" class="popup__form" novalidate>
           <div class="popup__field">
-            <input type="text" id="author-input" placeholder="Имя" class="popup__input popup__input_type_author"
+            <input type="text" id="author-input" name="author" placeholder="Имя" class="popup__input popup__input_type_author"
               minlength="2" maxlength="40" required>
             <span class="popup__input-error author-input-error"></span>
           </div>
           <div class="popup__field">
-            <input type="text" id="description-input" placeholder="О себе"
+            <input type="text" id="description-input" name="description" placeholder="О себе"
               class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
             <span class="popup__input-error description-input-error"></span>
           </div>
@@ -73,12 +73,12 @@
         <h2 class="popup__heading">Новое место</h2>
         <form id="add-card" name="add-form" class="popup__form" novalidate>
           <div class="popup__field">
-            <input type="text" id="card-name-input" placeholder="Название"
+            <input type="text" id="card-name-input" name="name1" placeholder="Название"
               class="popup__input popup__input_type_card-name" minlength="2" maxlength="30" required>
             <span class="popup__input-error card-name-input-error"></span>
           </div>
           <div class="popup__field">
-            <input id="card-link-input" placeholder="Ссылка на картинку"
+            <input id="card-link-input" name="link" placeholder="Ссылка на картинку"
               class="popup__input popup__input_type_card-link" type="url" required>
             <span class="popup__input-error card-link-input-error"></span>
           </div>
