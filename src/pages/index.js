@@ -1,37 +1,26 @@
-import { Card } from '../scripts/Card.js';
+import { Card } from '../components/Card.js';
 import { FormValidator } from '../scripts/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import './index.css';
+import Alexander_Nevsky_Chapel from '../images/Alexander_Nevsky_Chapel.jpg'
 
-
-
+// const Alexander_Nevsky_Chapel = new URL('../images/Alexander_Nevsky_Chapel.jpg', import.meta.url);
+const assumption_cathedral = new URL('../images/assumption_cathedral.jpg', import.meta.url);
+const gazeborotunda = new URL('../images/gazebo-rotunda.jpg', import.meta.url);
+const park_on_strelka = new URL('../images/park_on_strelka.jpg', import.meta.url);
+const night_city = new URL('../images/night_city.jpg', import.meta.url);
+const river_port = new URL('../images/river_port.jpg', import.meta.url);
+console.log(assumption_cathedral)
 const mapping = [
-    {
-        name: 'Часовня Александра Невского',
-        link: './images/Alexander_Nevsky_Chapel.jpg'
-    },
-    {
-        name: 'Успенский собор',
-        link: './images/assumption_cathedral.jpg'
-    },
-    {
-        name: 'Беседка-ротонда',
-        link: './images/gazebo-rotunda.jpg'
-    },
-    {
-        name: 'Парк на стрелке',
-        link: './images/park_on_strelka.jpg'
-    },
-    {
-        name: 'Ночной город',
-        link: './images/night_city.jpg'
-    },
-    {
-        name: 'Речной порт',
-        link: './images/river_port.jpg'
-    }
+    { name: 'Часовня Александра Невского', link: Alexander_Nevsky_Chapel },
+    { name: 'Успенский собор', link: assumption_cathedral.href },
+    { name: 'Беседка-ротонда', link: gazeborotunda.href },
+    { name: 'Парк на стрелке', link: park_on_strelka.href },
+    { name: 'Ночной город', link: night_city.href },
+    { name: 'Речной порт', link: river_port.href }
 ];
 
 const popupProfile = document.querySelector('#popup-edit-profile'); // попап профиля
@@ -92,11 +81,11 @@ function handleCardClick(name, link) {
     cardPopup.open();
 }
 
-function popupProfileOpen() {
-    authorField.value = profileAuthor.textContent; // передаем исходное значение в input.
-    descriptionField.value = profileDescription.textContent; // передаем исходное значение в input.
-    openPopup(popupProfile);
-}
+// function popupProfileOpen() {
+//     authorField.value = profileAuthor.textContent; // передаем исходное значение в input.
+//     descriptionField.value = profileDescription.textContent; // передаем исходное значение в input.
+//     openPopup(popupProfile);
+// }
 
 const user = new UserInfo('Ярослав Мудрый', 'Основатель города Ярославль', profileAuthor, profileDescription);
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место Россия</title>
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      
+      <img src="<%=require('./images/logo.svg')%>" class="header__logo" alt="место Россия">
+    </header>
+    <main>
+      <section class="profile">
+        <img src="<%=require('./images/Yaroslav_the_Wise.jpg')%>" class="profile__avatar" alt="Ярослав Мудрый">
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__author">Ярослав Мудрый</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <h2 class="profile__description">Основатель города Ярославль</h2>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="mapping">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">2022 Mesto Russia</p>
+    </footer>
+
+    <!-- попап редактирование профиля -->
+    <div id="popup-edit-profile" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form id="edit-profile" name="edit-form" class="popup__form" novalidate>
+          <div class="popup__field">
+            <input type="text" id="author-input" name="author" placeholder="Имя"
+              class="popup__input popup__input_type_author" minlength="2" maxlength="40" required>
+            <span class="popup__input-error author-input-error"></span>
+          </div>
+          <div class="popup__field">
+            <input type="text" id="description-input" name="description" placeholder="О себе"
+              class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
+            <span class="popup__input-error description-input-error"></span>
+          </div>
+          <button class="popup__submit" type="submit">
+            Сохранить
+          </button>
+        </form>
+        <button id="popup-profile-close-button" class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <!-- карточки -->
+    <template id="template">
+      <article class="card">
+        <button class="card__del-button" type="button"></button>
+        <img src="#" class="card__image" alt="#">
+        <div class="card__info">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </article>
+    </template>
+
+    <!-- попап добавления "карточки" -->
+    <div id="popup-card-add" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__heading">Новое место</h2>
+        <form id="add-card" name="add-form" class="popup__form" novalidate>
+          <div class="popup__field">
+            <input type="text" id="card-name-input" name="name1" placeholder="Название"
+              class="popup__input popup__input_type_card-name" minlength="2" maxlength="30" required>
+            <span class="popup__input-error card-name-input-error"></span>
+          </div>
+          <div class="popup__field">
+            <input id="card-link-input" name="link" placeholder="Ссылка на картинку"
+              class="popup__input popup__input_type_card-link" type="url" required>
+            <span class="popup__input-error card-link-input-error"></span>
+          </div>
+          <button class="popup__submit" type="submit">
+            Создать
+          </button>
+        </form>
+        <button id="popup-card-close-button" class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <!-- попап просмотра image -->
+    <div id="popup-img-zoom" class="popup popup_zoom">
+      <div class="popup__container popup__container_zoom">
+        <figure class="popup__figure">
+          <img src="#" class="popup__image" alt="#">
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+        <button id="popup-img-zoom-close-button" class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
