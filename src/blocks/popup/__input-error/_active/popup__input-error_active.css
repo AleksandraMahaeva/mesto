@@ -1,7 +1,9 @@
 .popup__input-error_active {
     opacity: 1;
     display: block;
-    margin: 5px 22px 20px 22px;
+    margin: 5px 22px 0;
+    font-size: 12px;
+    height: 15px;
 }
 
 @media all and (min-width: 1100px) {

@@ -17,7 +17,7 @@ export class Card {
     }
 
     generateCard() {
-        // Запишем разметку в приватное поле _element. 
+
         this._element = this._getTemplate();
 
         this._cardImage = this._element.querySelector('.card__image')
@@ -27,13 +27,13 @@ export class Card {
 
         this._element.querySelector('.card__title').textContent = this._name;
         this._setEventListeners();
-        // Вернём элемент наружу
+        
         return this._element;
     }
 
-    // удаление карточки
-    _cardDelete(element) {
-        element.remove();
+    _cardDelete() {
+        this._element.remove();
+        this._element = null;
     }
 
     _toggleLike(evt) {

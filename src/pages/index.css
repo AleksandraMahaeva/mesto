@@ -32,6 +32,7 @@
 @import url('../blocks/popup/__error/popup__error.css');
 @import url('../blocks/popup/__input-error/_active/popup__input-error_active.css');
 @import url('../blocks/popup/__field/popup__field.css');
+@import url('../blocks/popup/__field/_error/popup__field_error.css');
 /* cards */
 @import url('../blocks/mapping/mapping.css');
 /* footer */
