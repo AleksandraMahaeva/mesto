@@ -15,6 +15,7 @@
     </header>
     <main>
       <section class="profile">
+        <span class="profile__avatar-edit"></span>
         <img src="<%=require('./images/Yaroslav_the_Wise.jpg')%>" class="profile__avatar" alt="Ярослав Мудрый">
         <div class="profile__info">
           <div class="profile__container">
@@ -38,16 +39,16 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form id="edit-profile" name="edit-form" class="popup__form" novalidate>
           <div class="popup__field">
-            <input type="text" id="author-input" name="author" placeholder="Имя"
+            <input type="text" id="author-input" name="name" placeholder="Имя"
               class="popup__input popup__input_type_author" minlength="2" maxlength="40" required>
             <span class="popup__input-error author-input-error"></span>
           </div>
           <div class="popup__field">
-            <input type="text" id="description-input" name="description" placeholder="О себе"
+            <input type="text" id="description-input" name="about" placeholder="О себе"
               class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
             <span class="popup__input-error description-input-error"></span>
           </div>
-          <button class="popup__submit" type="submit">
+          <button id="edit-profile-button" class="popup__submit" type="submit">
             Сохранить
           </button>
         </form>
@@ -62,7 +63,10 @@
         <img src="#" class="card__image" alt="#">
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+          <span class="card__like-quantity-info">
+            <span class="card__like-quantity" type="button"></span>
+            <span class="card__like-quantity-number"></span>
+          </span>
         </div>
       </article>
     </template>
@@ -82,11 +86,42 @@
               class="popup__input popup__input_type_card-link" type="url" required>
             <span class="popup__input-error card-link-input-error"></span>
           </div>
-          <button class="popup__submit" type="submit">
+          <button id="add-card-button" class="popup__submit" type="submit">
             Создать
           </button>
         </form>
         <button id="popup-card-close-button" class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <!-- попап подтверждения удаления "карточки" -->
+    <div id="popup-confirmation" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__heading">Вы уверены?</h2>
+        <form id="confirmation" name="confirmation-form" class="popup__form" novalidate>
+          <button class="popup__submit" type="submit">
+            Да
+          </button>
+        </form>
+        <button id="popup-confirmation-close-button" class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <!-- попап обновления аватара пользователя -->
+    <div id="popup_user-avatar" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__heading">Обновить аватар?</h2>
+        <form id="edit-avatar" name="edit-avatar" class="popup__form" novalidate>
+          <div class="popup__field">
+            <input id="avatar-link-input" name="link" placeholder="Ссылка на картинку"
+              class="popup__input popup__input_type_avatar-link" type="url" required>
+            <span class="popup__input-error avatar-link-input-error"></span>
+          </div>
+          <button id="edit-avatar-button" class="popup__submit" type="submit">
+            Сохранить
+          </button>
+        </form>
+        <button id="popup-avatar-close-button" class="popup__close-button" type="button"></button>
       </div>
     </div>
 

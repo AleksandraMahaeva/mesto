@@ -16,3 +16,7 @@
 .card__del-button:hover {
     opacity: .5;
 }
+
+.card__del-button_invisible {
+    visibility: hidden;
+}

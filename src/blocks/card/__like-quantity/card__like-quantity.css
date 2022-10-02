@@ -1,4 +1,4 @@
-.card__like-button {
+.card__like-quantity {
     width: 22px;
     height: 19px;
     background-color: transparent;
@@ -11,11 +11,22 @@
     padding: 0;
 }
 
-.card__like-button:hover {
+.card__like-quantity:hover {
     opacity: .5;
 }
 
 
 .like_active {
     background-image: url(../../../images/like_active.svg);
+}
+
+
+.card__like-quantity-number {
+    color: black;
+    text-align: center;
+}
+.card__like-quantity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }

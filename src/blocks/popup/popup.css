@@ -12,4 +12,5 @@
     justify-content: center;
     background-color: rgb(0, 0, 0, .5);
     color: red;
+    z-index: 2;
 }

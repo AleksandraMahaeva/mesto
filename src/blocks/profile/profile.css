@@ -6,6 +6,7 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   position: relative;
 }
 
 @media all and (min-width: 1279px) {
